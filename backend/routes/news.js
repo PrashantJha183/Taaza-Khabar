@@ -31,8 +31,17 @@ router.post("/savednews", fetchData, async (req, res) => {
       return res.status(400).json({ error: "Article already saved" });
     }
     //saving news for particluar loggedin user by passing authToken at header
-    const { title, description, imageUrl, newsUrl, author, date, source } =
-      req.body;
+    const {
+      title,
+      description,
+      imageUrl,
+      newsUrl,
+      author,
+      Saveddate,
+      source,
+      date,
+      date2,
+    } = req.body;
 
     const savednewsArticle = new News({
       title,
@@ -40,14 +49,35 @@ router.post("/savednews", fetchData, async (req, res) => {
       imageUrl,
       newsUrl,
       author,
-      date,
+      Saveddate,
       source,
+      date,
+      date2,
       user: req.user.id,
     });
     res.json(await savednewsArticle.save());
   } catch (err) {
     console.error("Error message for savednews route", err.message);
     res.status(500).send("Server Error");
+  }
+});
+
+router.post("/checkedsavednews", fetchData, async (req, res) => {
+  try {
+    // Check if the news article already exists for the user
+    const existingArticle = await News.findOne({
+      user: req.user.id,
+      newsUrl: req.body.newsUrl,
+    });
+
+    if (existingArticle) {
+      return res.status(200).json({ exists: true, newsUrl: req.body.newsUrl });
+    }
+
+    return res.status(200).json({ exists: false, newsUrl: req.body.newsUrl });
+  } catch (err) {
+    console.error("Error checking saved news:", err.message);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 

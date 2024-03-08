@@ -2,8 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import NewsContext from "./Context/NewsContext";
 
 const NewsItem = (props) => {
-  let { title, description, imageUrl, newsUrl, author, date, date2, source } =
-    props;
+  let {
+    title,
+    description,
+    imageUrl,
+    newsUrl,
+    author,
+    date,
+    date2,
+    source,
+    Saveddate,
+  } = props;
 
   const { savedNews } = useContext(NewsContext);
   const [isBookmarked, setIsBookmarked] = useState(
@@ -21,7 +30,8 @@ const NewsItem = (props) => {
         author,
         source.name,
         date,
-        date2
+        date2,
+        Saveddate
       );
       setIsBookmarked(true); // Update the bookmarked state
       localStorage.setItem(newsUrl, "true"); // Save the bookmarked state to local storage
@@ -76,7 +86,7 @@ const NewsItem = (props) => {
             <form
               method="post"
               onSubmit={(e) => e.preventDefault()}
-              className="d-inline position-absolute px-5 mx-4"
+              className="d-inline position-absolute"
             >
               <button
                 type="submit"

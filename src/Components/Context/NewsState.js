@@ -11,7 +11,9 @@ const NewsState = (props) => {
     imageUrl,
     newsUrl,
     author,
-    source
+    source,
+    date,
+    date2
   ) => {
     try {
       const response = await fetch("http://localhost:5000/api/news/savednews", {
@@ -28,6 +30,9 @@ const NewsState = (props) => {
           newsUrl,
           author,
           source,
+          date,
+          date2,
+          Saveddate: new Date().toISOString(),
         }),
       });
 
@@ -44,8 +49,12 @@ const NewsState = (props) => {
     }
   };
 
+  const DeleteSavedNewsArticle = (id) => {
+    console.log("Deleted with id: " + id);
+  };
+
   return (
-    <NewsContext.Provider value={{ savedNews }}>
+    <NewsContext.Provider value={{ savedNews, DeleteSavedNewsArticle }}>
       {props.children}
     </NewsContext.Provider>
   );

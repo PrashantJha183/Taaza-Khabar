@@ -29,7 +29,7 @@ const newsSchema = new Schema({
     // required: true,
   },
 
-  date: {
+  Saveddate: {
     type: Date,
     default: Date.now,
   },
@@ -37,6 +37,14 @@ const newsSchema = new Schema({
   source: {
     type: String,
     // required: true,
+  },
+
+  date: {
+    type: Date,
+  },
+
+  date2: {
+    type: Date,
   },
 });
 
