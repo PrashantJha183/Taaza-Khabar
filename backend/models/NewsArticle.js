@@ -6,36 +6,37 @@ const newsSchema = new Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   title: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   description: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   imageUrl: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   newsUrl: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   author: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   date: {
     type: Date,
     default: Date.now,
   },
+
   source: {
     type: String,
-    required: true,
+    // required: true,
   },
 });
 

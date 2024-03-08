@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import NewsContext from "./Context/NewsContext";
+
 const NewsItem = (props) => {
   let { title, description, imageUrl, newsUrl, author, date, date2, source } =
     props;
+
+  const { savedNews } = useContext(NewsContext);
+  const [isBookmarked, setIsBookmarked] = useState(
+    localStorage.getItem(newsUrl) === "true"
+  );
+
+  const handleBookmark = async () => {
+    try {
+      // Call the savedNews function from the context with the news details
+      await savedNews(
+        title,
+        description,
+        imageUrl,
+        newsUrl,
+        author,
+        source.name,
+        date,
+        date2
+      );
+      setIsBookmarked(true); // Update the bookmarked state
+      localStorage.setItem(newsUrl, "true"); // Save the bookmarked state to local storage
+    } catch (error) {
+      console.error("Error bookmarking news item:", error);
+    }
+  };
+
+  useEffect(() => {
+    const isArticleBookmarked = localStorage.getItem(newsUrl) === "true";
+    setIsBookmarked(isArticleBookmarked);
+  }, [newsUrl]);
+
   return (
     <>
-      <div className="my-3">
+      <div className="my-2">
         <div className="card">
           <div
             className="d-flex justify-content-end position-absolute"
             style={{ right: 0 }}
           >
-            <span className=" badge bg-info">
+            <span className="badge bg-info">
               {source.name}
               <span className="visually-hidden">unread messages</span>
             </span>
@@ -18,9 +51,8 @@ const NewsItem = (props) => {
           <img
             className="card-img-top"
             src={
-              imageUrl
-                ? imageUrl
-                : "https://www.journaldugeek.com/content/uploads/2022/10/anonymous.jpg"
+              imageUrl ||
+              "https://www.journaldugeek.com/content/uploads/2022/10/anonymous.jpg"
             }
             alt="..."
           />
@@ -41,6 +73,20 @@ const NewsItem = (props) => {
             >
               Read More
             </a>
+            <form
+              method="post"
+              onSubmit={(e) => e.preventDefault()}
+              className="d-inline position-absolute px-5 mx-4"
+            >
+              <button
+                type="submit"
+                className="btn btn-sm btn-outline-secondary ms-2"
+                onClick={handleBookmark}
+                disabled={isBookmarked}
+              >
+                {isBookmarked ? "Bookmarked" : "Bookmark"}
+              </button>
+            </form>
           </div>
         </div>
       </div>

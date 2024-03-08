@@ -11,7 +11,7 @@ router.post("/fetchsavednews", fetchData, async (req, res) => {
 
     //fetching all news articles saved by the user by passing user id which is fetched by middleware function
     const newsArticle = await News.find({ user: userId });
-    res.json([newsArticle]);
+    res.send(newsArticle);
   } catch (err) {
     console.error("Error message for fetchedsavednews route", err.message);
     res.status(500).send("Server Error");

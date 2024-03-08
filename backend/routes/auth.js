@@ -59,9 +59,10 @@ router.post(
       //signing the authentication token for authToken generation
       const authToken = jwt.sign(data, JWT_SECRET);
       console.log("authToken: ", authToken);
+      let success = true;
 
       //after creating user account one authentication token will generate and that token wil be send to the user for verfication
-      res.json(authToken);
+      res.json({ success, authToken });
     } catch (err) {
       console.error("Error message for signup route", err.message);
       res.status(500).send("Server Error");
