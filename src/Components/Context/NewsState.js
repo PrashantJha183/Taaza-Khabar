@@ -20,8 +20,7 @@ const NewsState = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authToken:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlNTk0YWJkNzczNWM2ZTAxYjA1NTRlIn0sImlhdCI6MTcwOTcxNjE5NH0.xEV9rXyovHuDI6AnTJCt5RC_j_ttZJq-zjVmWpoqUOc",
+          authToken: localStorage.getItem("token"),
         },
         body: JSON.stringify({
           title,
@@ -49,12 +48,8 @@ const NewsState = (props) => {
     }
   };
 
-  const DeleteSavedNewsArticle = (id) => {
-    console.log("Deleted with id: " + id);
-  };
-
   return (
-    <NewsContext.Provider value={{ savedNews, DeleteSavedNewsArticle }}>
+    <NewsContext.Provider value={{ savedNews }}>
       {props.children}
     </NewsContext.Provider>
   );

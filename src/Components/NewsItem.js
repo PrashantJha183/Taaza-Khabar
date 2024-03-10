@@ -35,8 +35,10 @@ const NewsItem = (props) => {
       );
       setIsBookmarked(true); // Update the bookmarked state
       localStorage.setItem(newsUrl, "true"); // Save the bookmarked state to local storage
+      // props.showAlert(title + "bookmarked successfully", "success");
     } catch (error) {
       console.error("Error bookmarking news item:", error);
+      // props.showAlert("Error bookmarking news item", "danger");
     }
   };
 
@@ -75,6 +77,7 @@ const NewsItem = (props) => {
                 {new Date(date2).toLocaleTimeString()}
               </small>
             </p>
+
             <a
               href={newsUrl}
               target="_blank"
@@ -83,20 +86,22 @@ const NewsItem = (props) => {
             >
               Read More
             </a>
-            <form
-              method="post"
-              onSubmit={(e) => e.preventDefault()}
-              className="d-inline position-absolute"
-            >
-              <button
-                type="submit"
-                className="btn btn-sm btn-outline-secondary ms-2"
-                onClick={handleBookmark}
-                disabled={isBookmarked}
+            {localStorage.getItem("token") && (
+              <form
+                method="post"
+                onSubmit={(e) => e.preventDefault()}
+                className="d-inline position-absolute"
               >
-                {isBookmarked ? "Bookmarked" : "Bookmark"}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="btn btn-sm btn-outline-secondary ms-2"
+                  onClick={handleBookmark}
+                  disabled={isBookmarked}
+                >
+                  {isBookmarked ? "Bookmarked" : "Bookmark"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

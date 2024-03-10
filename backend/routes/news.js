@@ -62,25 +62,6 @@ router.post("/savednews", fetchData, async (req, res) => {
   }
 });
 
-router.post("/checkedsavednews", fetchData, async (req, res) => {
-  try {
-    // Check if the news article already exists for the user
-    const existingArticle = await News.findOne({
-      user: req.user.id,
-      newsUrl: req.body.newsUrl,
-    });
-
-    if (existingArticle) {
-      return res.status(200).json({ exists: true, newsUrl: req.body.newsUrl });
-    }
-
-    return res.status(200).json({ exists: false, newsUrl: req.body.newsUrl });
-  } catch (err) {
-    console.error("Error checking saved news:", err.message);
-    res.status(500).json({ error: "Server Error" });
-  }
-});
-
 //----------Deleting saved news articles for the logged in the user "/api/news/deletesavednews  login required-----------"
 router.delete("/deletesavednews/:id", fetchData, async (req, res) => {
   try {

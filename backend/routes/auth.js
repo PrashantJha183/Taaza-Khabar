@@ -80,6 +80,8 @@ router.post(
     //---------------Verifying validation-----------------
     //Verifying error and returning it
     try {
+      let success = false;
+      console.log("On unsuccessful login: ", success);
       const result = validationResult(req);
       if (!result.isEmpty()) {
         return res.status(400).json({ errors: result.array() });
@@ -116,8 +118,10 @@ router.post(
       const authToken = jwt.sign(payload, JWT_SECRET);
       console.log("authToken after login: ", authToken);
 
+      success = true;
+      console.log("On successful login: ", success);
       //after login one authentication token will generate and that token will be sent to the user for verification
-      res.json(authToken);
+      res.json({ authToken, success });
     } catch (err) {
       console.error("Error message for login route", err.message);
       res.status(500).send("Server Error");

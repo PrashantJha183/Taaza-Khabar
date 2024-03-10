@@ -11,24 +11,38 @@ const News = (props) => {
   const Capital = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-  const updatedNews = async () => {
-    props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
-    setLoading(true);
-    let data = await fetch(url);
-    props.setProgress(30);
-    let pd = await data.json();
-    props.setProgress(70);
-    setArticles(pd.articles);
-    setLoading(false);
-    setTotalResults(pd.totalResults);
-    props.setProgress(100);
-  };
   useEffect(() => {
+    const updatedNews = async () => {
+      try {
+        props.setProgress(10);
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        setLoading(true);
+        let data = await fetch(url);
+        props.setProgress(30);
+        let pd = await data.json();
+        props.setProgress(70);
+        setArticles(pd.articles);
+        setLoading(false);
+        setTotalResults(pd.totalResults);
+        props.setProgress(100);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        // Handle the error, e.g., set an error state or show a message to the user
+      }
+    };
+
     document.title = `Taaza-Khabar -${Capital(props.category)}`;
     updatedNews();
-    // eslint-disable-next-line
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    props.category,
+    props.country,
+    props.apiKey,
+    page,
+    props.pageSize,
+    props.setProgress,
+  ]);
+
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
@@ -41,6 +55,7 @@ const News = (props) => {
     setArticles(articles.concat(pd.articles));
     setTotalResults(pd.totalResults);
   };
+
   return (
     <div className="container my-5">
       <h2 className="text-center" style={{ marginTop: "90px" }}>
