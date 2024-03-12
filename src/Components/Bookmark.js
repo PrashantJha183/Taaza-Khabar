@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const Bookmark = (props) => {
   const [loading, setLoading] = useState(true);
-
+  const [username, setUsername] = useState("");
   const { data: bookmarkedNews, error } = useSWR(
     "http://localhost:5000/api/news/fetchsavednews",
     async (url) => {
@@ -36,8 +36,15 @@ const Bookmark = (props) => {
 
   useEffect(() => {
     document.title = `Taaza-Khabar - ${Capital(props.category)}`;
-    // eslint-disable-next-line
+    // eslint-disable-next-lines
+    const fetchUsername = async () => {
+      const name = await Username();
+      setUsername(name);
+    };
+    // console.log("kya username", username);
+    fetchUsername();
   }, []);
+  console.log("kya username", username);
 
   const DeleteSavednewsArticles = async (id, newsUrl, title) => {
     try {
@@ -68,6 +75,22 @@ const Bookmark = (props) => {
       console.error("Error deleting news article:", error);
       props.showAlert("Error deleting saved news articles", "danger");
     }
+  };
+
+  const Username = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/auth/fetchuserdata",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          authToken: localStorage.getItem("token"),
+        },
+      }
+    );
+    const json = await response.json();
+    console.log("Username:", json.name);
+    return json.name;
   };
 
   if (error) {
@@ -164,7 +187,8 @@ const Bookmark = (props) => {
                     </div>
                     <p className="text-center">
                       Saved on {new Date(item.Saveddate).toLocaleDateString()}{" "}
-                      at {new Date(item.Saveddate).toLocaleTimeString()}
+                      at {new Date(item.Saveddate).toLocaleTimeString()} by{" "}
+                      {username && <span>{username}</span>}
                     </p>
                   </div>
                 </div>

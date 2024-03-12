@@ -27,7 +27,6 @@ const News = (props) => {
         props.setProgress(100);
       } catch (error) {
         console.error("Error fetching news:", error);
-        // Handle the error, e.g., set an error state or show a message to the user
       }
     };
 
@@ -56,6 +55,8 @@ const News = (props) => {
     setTotalResults(pd.totalResults);
   };
 
+  const { showAlert } = props;
+
   return (
     <div className="container my-5">
       <h2 className="text-center" style={{ marginTop: "90px" }}>
@@ -74,6 +75,7 @@ const News = (props) => {
               return (
                 <div className="col-md-3" key={element.url}>
                   <NewsItem
+                    showAlert={showAlert}
                     title={element.title ? element.title.slice(0, 40) : ""}
                     description={
                       element.description
@@ -105,30 +107,3 @@ News.propTypes = {
 };
 
 export default News;
-/* <div className="container">
-          {!this.state.loading && (
-            <div className="d-flex justify-content-between">
-              <button
-                disabled={this.state.page <= 1}
-                type="button"
-                className="btn btn-success"
-                onClick={this.previousClick}
-              >
-                &larr; Previous
-              </button>
-
-              <h4>{this.state.page}</h4>
-
-              <button
-                disabled={
-                  this.state.page + 1 >
-                  Math.ceil(this.state.totalResults / props.pageSize)
-                }
-                type="button"
-                className="btn btn-success"
-                onClick={this.nextClick}
-              >
-                Next &rarr;
-              </button>
-            </div>
-          )} */

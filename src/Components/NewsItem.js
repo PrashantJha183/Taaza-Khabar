@@ -35,10 +35,10 @@ const NewsItem = (props) => {
       );
       setIsBookmarked(true); // Update the bookmarked state
       localStorage.setItem(newsUrl, "true"); // Save the bookmarked state to local storage
-      // props.showAlert(title + "bookmarked successfully", "success");
+      props.showAlert(title + "bookmarked successfully", "success");
     } catch (error) {
       console.error("Error bookmarking news item:", error);
-      // props.showAlert("Error bookmarking news item", "danger");
+      props.showAlert("Error bookmarking news item", "danger");
     }
   };
 
