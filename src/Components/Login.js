@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = (props) => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const expiration = localStorage.getItem("expiration");
+
+    if (token && expiration) {
+      const now = new Date().getTime();
+      if (now > expiration) {
+        // Token has expired
+        localStorage.removeItem("token");
+        localStorage.removeItem("expiration");
+        props.showAlert("Session expired. Please login again.", "warning");
+      } else {
+        // Token is still valid
+        navigate("/");
+      }
+    }
+  }, [navigate, props]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/auth/login", {
@@ -19,13 +38,15 @@ const Login = (props) => {
     const json = await response.json();
     console.log("json:", json);
     if (json.success) {
-      //save authToken and redirect to homepage and unlock all pages for the user
+      // Save authToken and expiration time
+      const now = new Date().getTime();
+      const expiration = now + 30 * 60 * 1000; // 30 minutes expiration
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("expiration", expiration);
 
       navigate("/");
       props.showAlert("Login successfully", "success");
     } else {
-      //   alert("Invalid credentials");
       props.showAlert("Invalid credentials", "danger");
     }
   };
@@ -33,6 +54,7 @@ const Login = (props) => {
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+
   return (
     <>
       <div className="container">

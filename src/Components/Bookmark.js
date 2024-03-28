@@ -26,7 +26,7 @@ const Bookmark = (props) => {
       setLoading(false);
       props.setProgress(100);
       console.log("Data", data);
-      return data;
+      return data.sort((a, b) => new Date(b.Saveddate) - new Date(a.Saveddate));
     }
   );
 

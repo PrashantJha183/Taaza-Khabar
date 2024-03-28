@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+<h1>Taaza-Khabar</h1>
+<h5>Taaza Khabar is a sophisticated React application designed to provide users with a unique news browsing experience. Utilizing the newsapi.org API, the app offers a curated selection of news articles from a day older, presenting users with a comprehensive overview of recent events. Allowing users to navigate through different news categories with ease. From business to sports, technology, and more, Taaza Khabar categorizes news articles to cater to a wide range of interests. This categorization feature enables users to quickly access news that is relevant to them, enhancing their overall browsing experience. One of the standout features of Taaza Khabar is its login functionality, which provides users with personalized access to news articles. Logged-in users can not only view news from various categories but also bookmark articles for later reading. This personalized approach enhances user engagement and encourages users to return to the app for their news needs. In addition to its user-friendly interface and personalized features</h5>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>Features</h1>
+<h5>
+<ol>
+<li>User Registration and Login: Users can create accounts and log in to access personalized features and content.</li>
+<li>News Categories: The app offers a variety of news categories such as business, science, entertainment, and more, allowing users to explore news topics of interest.
+</li>
+<li>
+Bookmarking: Users can bookmark articles to save them for later reading, making it easy to keep track of important or interesting news stories.
+</li>
 
-## Available Scripts
+<li>
+Personalized News Feed: Logged-in users receive a personalized news feed based on their interests and browsing history, ensuring they receive relevant content.
 
-In the project directory, you can run:
+</li>
 
-### `npm start`
+<li>
+Source Attribution: Each article includes information about the source, date, author name, and a brief description, providing users with context and credibility
+</li>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<li>Read More: Users can click on a "Read More" button to access the full article, allowing them to delve deeper into topics of interest.
+</li>
+</ol>
+</h5>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<h1>Prerequistites</h1>
+<h5>
+<ol>
+<li>react-router-dom</li>
+<li>concurrently</li>
+<li>nodemon</li>
+<li>bcryptjs</li>
+<li>express-validator</li>
+<li>jsonwebtoken</li>
+<li>mongoose</li>
+</ol>
+</h5>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<h1>Steps to install</h1>
+<h5>
+<ol>
+<li>To run the project, you'll need to have Node.js installed on your machine.</li>
+<li>Download Project Source Code from here.o execute the code, run the command npm run both in the terminal.</li>
+<li>o execute the code, run the command npm run both in the terminal.</li>
+</ol>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</h5>
+![alt text](image.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![alt text](image-1.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt text](image-2.png)
