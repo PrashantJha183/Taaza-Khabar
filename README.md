@@ -48,8 +48,15 @@ Source Attribution: Each article includes information about the source, date, au
 </ol>
 
 
-![alt text](image.png)
 
-![alt text](image-1.png)
 
-![alt text](image-2.png)
+
+![Screenshot 2024-04-10 110412](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/8a12b41c-65e6-4777-8ed2-4176b8eea6a7)
+
+![Screenshot 2024-04-10 110455](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/84004894-1bf2-42f8-aaf5-db63805c3d4e)
+
+![Screenshot 2024-04-10 110534](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/f000f7ca-a697-4551-8766-4b842fc8f235)
+
+
+
+
