@@ -112,7 +112,7 @@ const Bookmark = (props) => {
   if (!bookmarkedNews || bookmarkedNews.length === 0) {
     return (
       <div
-        className="text-center"
+        className="text-center my-3"
         style={{
           display: "grid",
           placeItems: "center",
@@ -127,7 +127,7 @@ const Bookmark = (props) => {
 
   return (
     <>
-      <h2 className="text-center" style={{ marginTop: "90px" }}>
+      <h2 className="text-center my-3">
         Taaza-Khabar - Top {Capital(props.category)} Headlines
       </h2>
       {loading && <Spinner />}
@@ -185,7 +185,7 @@ const Bookmark = (props) => {
                         Delete
                       </button>
                     </div>
-                    <p className="text-center">
+                    <p className="text-center container">
                       Saved on {new Date(item.Saveddate).toLocaleDateString()}{" "}
                       at {new Date(item.Saveddate).toLocaleTimeString()} by{" "}
                       {username && <span>{username}</span>}

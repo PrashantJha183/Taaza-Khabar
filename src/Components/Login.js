@@ -4,8 +4,10 @@ import { useNavigate, Link } from "react-router-dom";
 const Login = (props) => {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
+    document.title = "Taaza-Khabar - Login";
     const token = localStorage.getItem("token");
     const expiration = localStorage.getItem("expiration");
 
@@ -55,11 +57,16 @@ const Login = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <div className="container">
+        <h1 className="text-center">LOGIN</h1>
+
         <form method="post" onSubmit={handleSubmit}>
-          {" "}
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
             <input
@@ -75,25 +82,40 @@ const Login = (props) => {
               autoComplete="off"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group my-3">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-              required
-              autoComplete="off"
-            />
+            <div className="input-group">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                id="password"
+                placeholder="Password"
+                name="password"
+                value={credentials.password}
+                onChange={onChange}
+                required
+                autoComplete="off"
+              />
+              <button
+                type="button"
+                className="btn btn-outline-secondary"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          <div className="d-grid gap-2">
+            <button className="btn btn-outline-success my-3" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
-        <Link to="/signup">Don't have an account?</Link>
+        <div className="text-center">
+          <Link to="/signup" style={{ textDecoration: "none", color: "#000" }}>
+            Don't have an account?
+          </Link>
+        </div>
       </div>
     </>
   );

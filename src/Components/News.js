@@ -58,8 +58,8 @@ const News = (props) => {
   const { showAlert } = props;
 
   return (
-    <div className="container my-5">
-      <h2 className="text-center" style={{ marginTop: "90px" }}>
+    <div className="container my-4">
+      <h2 className="text-center" >
         Taaza-Khabar -Top {Capital(props.category)} Headlines
       </h2>
       {loading && <Spinner />}

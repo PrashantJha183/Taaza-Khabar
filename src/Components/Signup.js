@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/auth/signup", {
@@ -30,36 +33,40 @@ const Signup = (props) => {
       props.showAlert("Invalid credentials", "danger");
     }
   };
+
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  document.title = "Taaza-Khabar - Register";
+
   return (
     <>
-      {" "}
       <div className="container">
+        <h1 className="text-center">REGISTER</h1>
         <form method="post" onSubmit={handleSubmit}>
-          {" "}
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
               type="text"
               className="form-control"
               id="name"
-              aria-describedby="emailHelp"
               placeholder="Enter name"
               name="name"
               value={credentials.name}
               onChange={onChange}
-              reaquired
+              required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+          <div className="form-group my-3">
+            <label htmlFor="email">Email address</label>
             <input
               type="email"
               className="form-control"
               id="email"
-              aria-describedby="emailHelp"
               placeholder="Enter email"
               name="email"
               value={credentials.email}
@@ -68,23 +75,39 @@ const Signup = (props) => {
               autoComplete="off"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-              required
-              autoComplete="off"
-            />
+          <div className="form-group my-3">
+            <label htmlFor="password">Password</label>
+            <div className="input-group">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                id="password"
+                placeholder="Password"
+                name="password"
+                value={credentials.password}
+                onChange={onChange}
+                required
+                autoComplete="off"
+              />
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          <div className="d-grid gap-2">
+            <button className="btn btn-outline-success my-3" type="submit">
+              Submit
+            </button>
+          </div>
+          <div className="text-center">
+            <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
+              Already have an account
+            </Link>
+          </div>
         </form>
       </div>
     </>

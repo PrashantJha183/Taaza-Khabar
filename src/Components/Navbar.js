@@ -15,9 +15,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
+            <span>
+              <img
+                src="IMG-20240413-WA0009.jpg"
+                alt=""
+                style={{ height: "5vh", borderRadius: "75px" }}
+              />
+            </span>
             Taaza-Khabar
           </Link>
           <button
