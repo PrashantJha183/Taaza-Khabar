@@ -9,7 +9,6 @@ const Signup = (props) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   let navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/auth/signup", {
@@ -27,8 +26,9 @@ const Signup = (props) => {
     console.log("Signup response: ", json);
     if (json.success) {
       localStorage.setItem("token", json.authToken);
-      navigate("/login");
+      navigate("/");
       props.showAlert("Account created successfully", "success");
+  
     } else {
       props.showAlert("Invalid credentials", "danger");
     }
@@ -45,7 +45,25 @@ const Signup = (props) => {
 
   return (
     <>
-      <div className="container">
+      <img
+        src="Taaza_Khabar.webp"
+        alt="Nothing"
+        style={{
+          height: "92vh",
+          width: "99vw",
+          opacity: "0.5",
+          zIndex: "-1",
+          position: "absolute",
+        }}
+      />
+      <div
+        className="container my-5 py-5"
+        style={{
+          background: "transparent",
+          fontWeight: "bold",
+          fontSize: "1.2em",
+        }}
+      >
         <h1 className="text-center">REGISTER</h1>
         <form method="post" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -59,6 +77,7 @@ const Signup = (props) => {
               value={credentials.name}
               onChange={onChange}
               required
+              autoComplete="off"
             />
           </div>
           <div className="form-group my-3">

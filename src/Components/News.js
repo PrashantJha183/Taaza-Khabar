@@ -58,44 +58,48 @@ const News = (props) => {
   const { showAlert } = props;
 
   return (
-    <div className="container my-4">
-      <h2 className="text-center" >
-        Taaza-Khabar -Top {Capital(props.category)} Headlines
-      </h2>
-      {loading && <Spinner />}
-      <InfiniteScroll
-        dataLength={articles.length} //This is important field to render the next data
-        next={fetchMoreData}
-        hasMore={articles.length !== totalResults}
-        loader={<Spinner />}
-      >
-        <div className="container">
-          <div className="row ">
-            {articles.map((element) => {
-              return (
-                <div className="col-md-3" key={element.url}>
-                  <NewsItem
-                    showAlert={showAlert}
-                    title={element.title ? element.title.slice(0, 40) : ""}
-                    description={
-                      element.description
-                        ? element.description.slice(0, 50)
-                        : ""
-                    }
-                    imageUrl={element.urlToImage}
-                    newsUrl={element.url}
-                    author={element.author ? element.author : "Unknown author"}
-                    date={element.publishedAt}
-                    date2={element.publishedAt}
-                    source={element.source}
-                  />
-                </div>
-              );
-            })}
+    <>
+      <div className="container my-4">
+        <h2 className="text-center">
+          Taaza-Khabar -Top {Capital(props.category)} Headlines
+        </h2>
+        {loading && <Spinner />}
+        <InfiniteScroll
+          dataLength={articles.length} //This is important field to render the next data
+          next={fetchMoreData}
+          hasMore={articles.length !== totalResults}
+          loader={<Spinner />}
+        >
+          <div className="container">
+            <div className="row ">
+              {articles.map((element) => {
+                return (
+                  <div className="col-md-3" key={element.url}>
+                    <NewsItem
+                      showAlert={showAlert}
+                      title={element.title ? element.title.slice(0, 40) : ""}
+                      description={
+                        element.description
+                          ? element.description.slice(0, 50)
+                          : ""
+                      }
+                      imageUrl={element.urlToImage}
+                      newsUrl={element.url}
+                      author={
+                        element.author ? element.author : "Unknown author"
+                      }
+                      date={element.publishedAt}
+                      date2={element.publishedAt}
+                      source={element.source}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </InfiniteScroll>
-    </div>
+        </InfiniteScroll>
+      </div>
+    </>
   );
 };
 

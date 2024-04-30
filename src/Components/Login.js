@@ -63,7 +63,25 @@ const Login = (props) => {
 
   return (
     <>
-      <div className="container">
+      <img
+        src="Taaza_Khabar.webp"
+        alt="Nothing"
+        style={{
+          height: "92vh",
+          width: "99vw",
+          opacity: "0.5",
+          zIndex: "-1",
+          position: "absolute",
+        }}
+      />
+      <div
+        className="container my-5 py-5"
+        style={{
+          background: "transparent",
+          fontWeight: "bold",
+          fontSize: "1.2em",
+        }}
+      >
         <h1 className="text-center">LOGIN</h1>
 
         <form method="post" onSubmit={handleSubmit}>
