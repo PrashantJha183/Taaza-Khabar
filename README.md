@@ -49,14 +49,20 @@ Source Attribution: Each article includes information about the source, date, au
 
 
 
-![Screenshot 2024-04-10 110823](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/34c884f5-66d7-4fc1-b727-5dc7292d4499)
+![image](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/99703c33-0966-4a84-a1a5-887775fadede)
 
 
-![Screenshot 2024-04-10 110412](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/8a12b41c-65e6-4777-8ed2-4176b8eea6a7)
 
-![Screenshot 2024-04-10 110455](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/84004894-1bf2-42f8-aaf5-db63805c3d4e)
+![image](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/bf11c96f-bb8c-4b95-872b-1a5ad5c13ae0)
 
-![Screenshot 2024-04-10 110534](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/f000f7ca-a697-4551-8766-4b842fc8f235)
+
+![image](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/a60e401f-e263-42e1-9c65-2c20ba1a12dd)
+
+
+![image](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/a11718d8-c947-42b1-bdd3-43e62121d5cb)
+![image](https://github.com/PrashantJha183/Taaza-Khabar/assets/102291424/809c7b9c-f0ee-42bb-955f-12c0dd658217)
+
+
 
 
 
