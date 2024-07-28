@@ -43,7 +43,7 @@ Source Attribution: Each article includes information about the source, date, au
 
 <ol>
 <li>To run the project, you'll need to have Node.js installed on your machine.</li>
-<li>Download Project Source Code from here.o execute the code, run the command npm run both in the terminal.</li>
+<li>Download Project Source Code from here to execute the code, run the command npm run both in the terminal.</li>
 <li>o execute the code, run the command npm run both in the terminal.</li>
 </ol>
 
